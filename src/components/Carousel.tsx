@@ -336,8 +336,9 @@ export const Carousel = (props: CarouselProps) => {
 
             {!navButtonsAlwaysInvisible && showButton(true) &&
             <Box
-                sx={{...buttonWrapperSxProps, right: 0}}
-                style={buttonsWrapperStyle} {...buttonsWrapperProps}>
+                style={buttonsWrapperStyle} {...buttonsWrapperProps}
+                sx={{...buttonsWrapperProps.sx, ...buttonWrapperSxProps, right: 0}}
+            >
                 {NavButton !== undefined ?
                     NavButton({
                         onClick: next,
@@ -347,8 +348,8 @@ export const Carousel = (props: CarouselProps) => {
                         sx: buttonSxProps,
                     })
                     :
-                    <IconButton sx={buttonSxProps} onClick={next} aria-label="Next"
-                                style={buttonsStyle} {...buttonsProps}>
+                    <IconButton onClick={next} aria-label="Next"
+                                style={buttonsStyle} {...buttonsProps} sx={{...buttonsProps.sx, ...buttonSxProps}} >
                         {NextIcon}
                     </IconButton>
                 }
@@ -357,8 +358,9 @@ export const Carousel = (props: CarouselProps) => {
 
             {!navButtonsAlwaysInvisible && showButton(false) &&
             <Box
-                sx={{...buttonWrapperSxProps, left: 0}}
-                 style={buttonsWrapperStyle} {...buttonsWrapperProps}>
+                 style={buttonsWrapperStyle} {...buttonsWrapperProps}
+                 sx={{...buttonsWrapperProps.sx, ...buttonWrapperSxProps, left: 0}}
+            >
                 {NavButton !== undefined ?
                     NavButton({
                         onClick: prev,
@@ -368,8 +370,10 @@ export const Carousel = (props: CarouselProps) => {
                         sx: {...buttonSxProps}
                     })
                     :
-                    <IconButton sx={buttonSxProps} onClick={prev} aria-label="Previous"
-                                style={navButtonsProps.style} {...buttonsProps}>
+                    <IconButton onClick={prev} aria-label="Previous"
+                                style={navButtonsProps.style} {...buttonsProps}
+                                sx={{...buttonsProps.sx, ...buttonSxProps}}
+                    >
                         {PrevIcon}
                     </IconButton>
                 }
