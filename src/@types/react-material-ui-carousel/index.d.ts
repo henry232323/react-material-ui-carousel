@@ -1,8 +1,10 @@
 
 import React, { ReactNode, AriaAttributes } from 'react';
+import {SxProps} from "@mui/system";
+import {Theme} from "@mui/material/styles";
 
 export interface CarouselNavProps extends AriaAttributes {
-    className?: string,
+    sx?: SxProps<Theme>,
     style?: React.CSSProperties
 }
 
@@ -10,7 +12,7 @@ export interface CarouselProps {
     children?: ReactNode,
 
     /** Defines custom class name(s), that will be added to Carousel element */
-    className?: string,
+    sx?: SxProps<Theme>,
 
     /** Defines which child (assuming there are more than 1 children) will be displayed. Next and Previous Buttons as well as Indicators will work normally after the first render. When this prop is updated the carousel will display the chosen child. Use this prop to programmatically set the active child. If (index > children.length) then if (strictIndexing) index = last element. index */
     index?: number,
@@ -68,18 +70,18 @@ export interface CarouselProps {
     /** Gives full control of the nav buttons. Should return a button that uses the given `onClick`.  
      * Works in tandem with all other customization options (`navButtonsProps`, `navButtonsWrapperProps`, `navButtonsAlwaysVisible`, `navButtonsAlwaysInvisible`, `fullHeightHover` ...).  
      * Refer to the [example section](README.md) for more information */
-    NavButton?: ({ onClick, next, className, style, prev }: { onClick: Function, className: string, style: React.CSSProperties, next: boolean, prev: boolean }) => ReactNode
+    NavButton?: (props: { onClick: Function, sx: SxProps<Theme>, style: React.CSSProperties, next: boolean, prev: boolean }) => ReactNode
 
     /** Used to customize the indicators container/wrapper.  
-     * Type: `{className: string, style: React.CSSProperties}` */
+     * Type: `{sx: SxProps<Theme>, style: React.CSSProperties}` */
     indicatorContainerProps?: CarouselNavProps,
 
     /** Used to customize the **non-active** indicator `IconButton`s.  
-     * Type: `{className: string, style: React.CSSProperties}` */
+     * Type: `{sx: SxProps<Theme>, style: React.CSSProperties}` */
     indicatorIconButtonProps?: CarouselNavProps,
 
     /** Used to customize the **active** indicator `IconButton`.  
-     * Type: `{className: string, style: React.CSSProperties}` */
+     * Type: `{sx: SxProps<Theme>, style: React.CSSProperties}` */
     activeIndicatorIconButtonProps?: CarouselNavProps,
 
     /** Function that is called **after** internal `setActive()` method. The `setActive()` method is called when the next and previous buttons are pressed, when an indicator is pressed, or when the `index` prop changes. First argument is the child **we are going to display**, while the second argument is the child **that was previously displayed**. Will be c */
