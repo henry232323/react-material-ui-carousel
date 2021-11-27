@@ -1,7 +1,6 @@
 import React, {ReactNode, ReactNodeArray, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {CarouselNavProps, CarouselProps} from './types';
 
-import {createStyles, makeStyles} from '@mui/styles';
 import {Box, IconButton} from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
